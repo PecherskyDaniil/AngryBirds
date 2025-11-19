@@ -1,0 +1,18 @@
+[gd_scene load_steps=3 format=3 uid="uid://e5o2vxd2ty7t"]
+
+[ext_resource type="PackedScene" uid="uid://hlbl5x723sv1" path="res://scenes/catapult.tscn" id="1_bswci"]
+[ext_resource type="PackedScene" uid="uid://bdouenfriv8rq" path="res://scenes/bird.tscn" id="2_rus8k"]
+
+[node name="level1" type="Node2D"]
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionPolygon2D" parent="StaticBody2D"]
+position = Vector2(0, 500)
+polygon = PackedVector2Array(0, -2, 88, -15, 130, -17, 208, -8, 289, -20, 400, -42, 514, -26, 573, -42, 680, -70, 851, -83, 952, -55, 1089, -21, 1140, -12, 1150, 0, 1172, 18, 1169, 158, 1094, 184, 836, 169, 311, 179, -8, 180, -66, 107, -53, 53)
+
+[node name="catapult" parent="." instance=ExtResource("1_bswci")]
+position = Vector2(210, 439)
+
+[node name="bird" parent="." instance=ExtResource("2_rus8k")]
+position = Vector2(105, 335)

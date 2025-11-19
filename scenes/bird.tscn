@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://bdouenfriv8rq"]
+
+[ext_resource type="Script" uid="uid://cars6jfxesocg" path="res://scripts/bird.gd" id="1_3po83"]
+[ext_resource type="Texture2D" uid="uid://py6ha0ela0ux" path="res://assets/bird1.png" id="1_kqhkv"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_kqhkv"]
+radius = 16.0
+
+[node name="bird" type="RigidBody2D"]
+contact_monitor = true
+max_contacts_reported = 5
+script = ExtResource("1_3po83")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_kqhkv")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-5.68434e-14, -3)
+scale = Vector2(0.13125, 0.13125)
+texture = ExtResource("1_kqhkv")

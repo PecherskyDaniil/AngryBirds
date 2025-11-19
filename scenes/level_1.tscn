@@ -1,0 +1,67 @@
+[gd_scene load_steps=10 format=3 uid="uid://e5o2vxd2ty7t"]
+
+[ext_resource type="PackedScene" uid="uid://hlbl5x723sv1" path="res://scenes/catapult.tscn" id="1_bswci"]
+[ext_resource type="Script" uid="uid://diomlblrboutv" path="res://scripts/level_1.gd" id="1_rus8k"]
+[ext_resource type="Texture2D" uid="uid://e7atl18bwesx" path="res://assets/background.jpg" id="2_fcfvj"]
+[ext_resource type="PackedScene" uid="uid://bdouenfriv8rq" path="res://scenes/bird.tscn" id="2_rus8k"]
+[ext_resource type="PackedScene" uid="uid://gvjid20i1c4v" path="res://scenes/wood_pallete.tscn" id="4_5xbjy"]
+[ext_resource type="PackedScene" uid="uid://bldbwx7l4pxk4" path="res://scenes/pig.tscn" id="5_4nkto"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fcfvj"]
+size = Vector2(32, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_15mv3"]
+size = Vector2(21, 641)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_pa8r4"]
+size = Vector2(1153, 24)
+
+[node name="level1" type="Node2D"]
+script = ExtResource("1_rus8k")
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(577, 328)
+scale = Vector2(1.21053, 1.35021)
+texture = ExtResource("2_fcfvj")
+
+[node name="left_wall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="left_wall"]
+position = Vector2(-8, 332)
+shape = SubResource("RectangleShape2D_fcfvj")
+
+[node name="right_wall" type="StaticBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="right_wall"]
+position = Vector2(1157.5, 328.5)
+shape = SubResource("RectangleShape2D_15mv3")
+
+[node name="floor" type="StaticBody2D" parent="."]
+modulate = Color(0.224796, 0.48686, 0.434264, 1)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
+position = Vector2(575.5, 644)
+shape = SubResource("RectangleShape2D_pa8r4")
+
+[node name="catapult" parent="." instance=ExtResource("1_bswci")]
+position = Vector2(128, 576)
+
+[node name="bird" parent="." instance=ExtResource("2_rus8k")]
+
+[node name="bird2" parent="." instance=ExtResource("2_rus8k")]
+
+[node name="wood_pallete" parent="." instance=ExtResource("4_5xbjy")]
+position = Vector2(648, 581)
+rotation = 1.5708
+
+[node name="wood_pallete2" parent="." instance=ExtResource("4_5xbjy")]
+position = Vector2(718, 581)
+rotation = 1.5708
+
+[node name="wood_pallete3" parent="." instance=ExtResource("4_5xbjy")]
+position = Vector2(681, 536)
+
+[node name="pig" parent="." instance=ExtResource("5_4nkto")]
+position = Vector2(683, 587)
+
+[node name="bird3" parent="." instance=ExtResource("2_rus8k")]
