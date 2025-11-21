@@ -1,7 +1,8 @@
 extends RigidBody2D
 
+signal bird_dead
 @onready var collision:CollisionShape2D=get_node("CollisionShape2D")
-const DEAD_TIME=5.0
+const DEAD_TIME=2.0
 
 var is_active=false
 var dead_time_remains=DEAD_TIME
@@ -15,6 +16,7 @@ func _process(delta: float) -> void:
 	else:
 		dead_time_remains=DEAD_TIME
 	if dead_time_remains<=0:
+		bird_dead.emit()
 		self.queue_free()
 	
 func to_passive_state():

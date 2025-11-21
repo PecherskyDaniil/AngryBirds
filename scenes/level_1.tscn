@@ -50,6 +50,8 @@ position = Vector2(128, 576)
 
 [node name="bird2" parent="." instance=ExtResource("2_rus8k")]
 
+[node name="bird3" parent="." instance=ExtResource("2_rus8k")]
+
 [node name="wood_pallete" parent="." instance=ExtResource("4_5xbjy")]
 position = Vector2(648, 581)
 rotation = 1.5708
@@ -64,4 +66,11 @@ position = Vector2(681, 536)
 [node name="pig" parent="." instance=ExtResource("5_4nkto")]
 position = Vector2(683, 587)
 
-[node name="bird3" parent="." instance=ExtResource("2_rus8k")]
+[node name="pig2" parent="." instance=ExtResource("5_4nkto")]
+position = Vector2(680, 488)
+
+[connection signal="bird_dead" from="bird" to="." method="_on_bird_dead"]
+[connection signal="bird_dead" from="bird2" to="." method="_on_bird_dead"]
+[connection signal="bird_dead" from="bird3" to="." method="_on_bird_dead"]
+[connection signal="pig_dead" from="pig" to="." method="_on_pig_pig_dead"]
+[connection signal="pig_dead" from="pig2" to="." method="_on_pig_pig_dead"]
