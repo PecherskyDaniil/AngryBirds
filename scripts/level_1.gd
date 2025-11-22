@@ -1,6 +1,8 @@
 extends Node2D
 
 @onready var catapult=get_node("catapult")
+var number=1
+var stars=2
 func _ready() -> void:
 	put_all_birds_in_bucket()
 

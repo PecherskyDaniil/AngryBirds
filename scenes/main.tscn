@@ -1,7 +1,11 @@
-[gd_scene load_steps=2 format=3 uid="uid://dg67srd04diaa"]
+[gd_scene load_steps=3 format=3 uid="uid://dg67srd04diaa"]
 
-[ext_resource type="PackedScene" uid="uid://e5o2vxd2ty7t" path="res://scenes/level_1.tscn" id="1_o5qli"]
+[ext_resource type="Script" uid="uid://bgu50djtsbrho" path="res://scripts/main.gd" id="1_0wfyh"]
+[ext_resource type="PackedScene" uid="uid://dbb8m5jcvn8cp" path="res://scenes/main_menu.tscn" id="1_o5qli"]
 
 [node name="main" type="Node2D"]
+script = ExtResource("1_0wfyh")
 
-[node name="level1" parent="." instance=ExtResource("1_o5qli")]
+[node name="Main menu" parent="." instance=ExtResource("1_o5qli")]
+
+[connection signal="tree_exiting" from="." to="." method="save_settings"]
