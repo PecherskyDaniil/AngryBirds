@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://e7atl18bwesx"
-path="res://.godot/imported/background.jpg-3c1ee7bbff6a1283595ccc69bb1d6acd.ctex"
+uid="uid://cxxp36sfp1tm2"
+path="res://.godot/imported/stone_palletes.png-9c5e6b08682efd51b8e9c6c647b78289.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/background.jpg"
-dest_files=["res://.godot/imported/background.jpg-3c1ee7bbff6a1283595ccc69bb1d6acd.ctex"]
+source_file="res://assets/stone_palletes.png"
+dest_files=["res://.godot/imported/stone_palletes.png-9c5e6b08682efd51b8e9c6c647b78289.ctex"]
 
 [params]
 

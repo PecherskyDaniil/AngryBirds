@@ -1,0 +1,138 @@
+[gd_scene load_steps=14 format=3 uid="uid://kq4xry13o7ue"]
+
+[ext_resource type="Script" uid="uid://diomlblrboutv" path="res://scripts/level.gd" id="1_b4j7a"]
+[ext_resource type="Texture2D" uid="uid://e7atl18bwesx" path="res://assets/background.jpg" id="1_eqxsl"]
+[ext_resource type="PackedScene" uid="uid://hlbl5x723sv1" path="res://scenes/catapult.tscn" id="2_b4j7a"]
+[ext_resource type="PackedScene" uid="uid://bdouenfriv8rq" path="res://scenes/bird.tscn" id="3_wo48x"]
+[ext_resource type="PackedScene" uid="uid://vtfby340jagv" path="res://scenes/stone_pallete.tscn" id="4_6cvei"]
+[ext_resource type="PackedScene" uid="uid://bldbwx7l4pxk4" path="res://scenes/pig.tscn" id="4_y0kc7"]
+[ext_resource type="PackedScene" uid="uid://bu34inaxuad5q" path="res://scenes/result_panel.tscn" id="6_wo48x"]
+[ext_resource type="PackedScene" uid="uid://bhexw80nnyknk" path="res://scenes/fast_bird.tscn" id="6_y0kc7"]
+[ext_resource type="PackedScene" uid="uid://cs2gdi4gv64hs" path="res://scenes/pause.tscn" id="8_ne2mo"]
+[ext_resource type="PackedScene" uid="uid://bwxbvoquidg4p" path="res://scenes/glass_pallete.tscn" id="10_que50"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ne2mo"]
+size = Vector2(26, 648)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6cvei"]
+size = Vector2(16, 656)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_que50"]
+size = Vector2(1161.61, 20)
+
+[node name="level2" type="Node2D"]
+script = ExtResource("1_b4j7a")
+level_number = 1
+MAX_SCORE = 1400.0
+
+[node name="background" type="Sprite2D" parent="."]
+position = Vector2(576, 324)
+scale = Vector2(1.21263, 1.36709)
+texture = ExtResource("1_eqxsl")
+
+[node name="left_wall" type="StaticBody2D" parent="."]
+position = Vector2(0, 16.005)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="left_wall"]
+position = Vector2(-3, 307.995)
+shape = SubResource("RectangleShape2D_ne2mo")
+
+[node name="right_wall" type="StaticBody2D" parent="."]
+position = Vector2(29.23, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="right_wall"]
+position = Vector2(1122.77, 328)
+shape = SubResource("RectangleShape2D_6cvei")
+
+[node name="floor" type="StaticBody2D" parent="."]
+position = Vector2(22.77, 6.67)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="floor"]
+position = Vector2(548.422, 641.33)
+shape = SubResource("RectangleShape2D_que50")
+
+[node name="Score_anim_label" type="Label" parent="."]
+modulate = Color(0, 0, 0, 1)
+offset_left = 40.0
+offset_top = 16.0
+offset_right = 80.0
+offset_bottom = 39.0
+
+[node name="stone_pallete" parent="." instance=ExtResource("4_6cvei")]
+position = Vector2(616, 584)
+rotation = 1.5708
+
+[node name="stone_pallete2" parent="." instance=ExtResource("4_6cvei")]
+position = Vector2(520, 584)
+rotation = 1.5708
+
+[node name="pig" parent="." instance=ExtResource("4_y0kc7")]
+position = Vector2(568, 592)
+
+[node name="bird" parent="." instance=ExtResource("3_wo48x")]
+
+[node name="fast_bird" parent="." instance=ExtResource("6_y0kc7")]
+
+[node name="stone_pallete3" parent="." instance=ExtResource("4_6cvei")]
+position = Vector2(720, 584)
+rotation = 1.5708
+
+[node name="pig2" parent="." instance=ExtResource("4_y0kc7")]
+position = Vector2(672, 592)
+
+[node name="stone_pallete4" parent="." instance=ExtResource("4_6cvei")]
+position = Vector2(568, 528)
+
+[node name="stone_pallete5" parent="." instance=ExtResource("4_6cvei")]
+position = Vector2(672, 528)
+
+[node name="glass_pallete" parent="." instance=ExtResource("10_que50")]
+position = Vector2(568, 464)
+rotation = 1.5708
+
+[node name="glass_pallete2" parent="." instance=ExtResource("10_que50")]
+position = Vector2(664, 464)
+rotation = 1.5708
+
+[node name="glass_pallete3" parent="." instance=ExtResource("10_que50")]
+position = Vector2(616, 408)
+
+[node name="pig3" parent="." instance=ExtResource("4_y0kc7")]
+position = Vector2(616, 480)
+
+[node name="bird2" parent="." instance=ExtResource("3_wo48x")]
+
+[node name="fast_bird2" parent="." instance=ExtResource("6_y0kc7")]
+
+[node name="fast_bird3" parent="." instance=ExtResource("6_y0kc7")]
+position = Vector2(-3, 0)
+
+[node name="catapult" parent="." instance=ExtResource("2_b4j7a")]
+position = Vector2(152, 576)
+
+[node name="ResultPanel" parent="." instance=ExtResource("6_wo48x")]
+visible = false
+
+[node name="Camera2D" type="Camera2D" parent="."]
+
+[node name="Pause" parent="." instance=ExtResource("8_ne2mo")]
+visible = false
+level_number = 1
+
+[connection signal="score_event" from="pig" to="." method="get_score"]
+[connection signal="score_event" from="bird" to="." method="get_score"]
+[connection signal="score_event" from="fast_bird" to="." method="get_score"]
+[connection signal="score_event" from="stone_pallete3" to="." method="get_score"]
+[connection signal="score_event" from="pig2" to="." method="get_score"]
+[connection signal="score_event" from="stone_pallete4" to="." method="get_score"]
+[connection signal="score_event" from="stone_pallete5" to="." method="get_score"]
+[connection signal="score_event" from="glass_pallete" to="." method="get_score"]
+[connection signal="score_event" from="glass_pallete2" to="." method="get_score"]
+[connection signal="score_event" from="glass_pallete3" to="." method="get_score"]
+[connection signal="score_event" from="pig3" to="." method="get_score"]
+[connection signal="score_event" from="bird2" to="." method="get_score"]
+[connection signal="score_event" from="fast_bird2" to="." method="get_score"]
+[connection signal="score_event" from="fast_bird3" to="." method="get_score"]
+[connection signal="grab" from="catapult" to="." method="_on_catapult_grab"]
+[connection signal="release" from="catapult" to="." method="_on_catapult_release"]
+[connection signal="throw" from="catapult" to="." method="_on_catapult_throw"]

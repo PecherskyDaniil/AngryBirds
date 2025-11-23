@@ -10,8 +10,8 @@ default_font_size = 40
 script = ExtResource("1_gkmvm")
 
 [node name="LevelSelecter" type="Sprite2D" parent="."]
-position = Vector2(577, 323.00003)
-scale = Vector2(0.90125394, 0.8977901)
+position = Vector2(577, 323)
+scale = Vector2(0.901254, 0.89779)
 texture = ExtResource("1_aeu7d")
 
 [node name="Back" type="Button" parent="."]

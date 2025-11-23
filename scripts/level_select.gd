@@ -1,7 +1,7 @@
 extends Node2D
 
-var level_scene:PackedScene
-func update_level(level_name:String, stars:int, level:PackedScene):
+var level_scene:String
+func update_level(level_name:String, stars:int, level:String):
 	level_scene=level
 	var star_texture = preload("res://assets/star.png")
 	var no_star_texture = preload("res://assets/no star.png")
@@ -28,4 +28,4 @@ func update_level(level_name:String, stars:int, level:PackedScene):
 
 func _on_button_pressed() -> void:
 	if level_scene:
-		get_tree().change_scene_to_packed(level_scene)
+		get_tree().change_scene_to_file(level_scene)

@@ -25,7 +25,6 @@ text = "
 "
 icon = ExtResource("2_2epne")
 flat = true
-autowrap_trim_flags = 0
 expand_icon = true
 
 [node name="CenterContainer" type="CenterContainer" parent="Button"]

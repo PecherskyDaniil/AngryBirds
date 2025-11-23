@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://bdouenfriv8rq"]
 
 [ext_resource type="Script" uid="uid://cars6jfxesocg" path="res://scripts/bird.gd" id="1_3po83"]
-[ext_resource type="Texture2D" uid="uid://py6ha0ela0ux" path="res://assets/bird1.png" id="1_kqhkv"]
+[ext_resource type="Texture2D" uid="uid://beav4n8mao1ft" path="res://assets/31cbcd967e539f76f32e1763b004d830.png" id="2_3po83"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_kqhkv"]
 radius = 16.0
@@ -15,6 +15,8 @@ script = ExtResource("1_3po83")
 shape = SubResource("CircleShape2D_kqhkv")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(-5.68434e-14, -3)
-scale = Vector2(0.13125, 0.13125)
-texture = ExtResource("1_kqhkv")
+position = Vector2(-4.76837e-07, 0)
+scale = Vector2(0.763725, 0.783333)
+texture = ExtResource("2_3po83")
+region_enabled = true
+region_rect = Rect2(623.48, 303.445, 51.5197, 48.9972)
