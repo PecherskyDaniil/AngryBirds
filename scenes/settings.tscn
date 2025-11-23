@@ -1,0 +1,57 @@
+[gd_scene load_steps=6 format=3 uid="uid://bd5fhsl77te4t"]
+
+[ext_resource type="Texture2D" uid="uid://cn0y3rngqi21d" path="res://assets/settings_background.png" id="1_5p8wc"]
+[ext_resource type="Script" uid="uid://ct7lqolj177ea" path="res://scripts/settings.gd" id="1_r6d6q"]
+
+[sub_resource type="Theme" id="Theme_r6d6q"]
+default_font_size = 35
+
+[sub_resource type="Theme" id="Theme_6wm04"]
+default_font_size = 30
+
+[sub_resource type="Theme" id="Theme_5p8wc"]
+default_font_size = 40
+
+[node name="Settings" type="Node2D"]
+script = ExtResource("1_r6d6q")
+
+[node name="SettingsBackground" type="Sprite2D" parent="."]
+position = Vector2(160, 111.99999)
+scale = Vector2(0.27848098, 0.35833335)
+texture = ExtResource("1_5p8wc")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+offset_top = 16.0
+offset_right = 320.0
+offset_bottom = 224.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 10
+
+[node name="VolumeLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_r6d6q")
+text = "Volume"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="Volume" type="HSlider" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Back" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme = SubResource("Theme_6wm04")
+text = "Back"
+
+[node name="SettingsLabel" type="Label" parent="."]
+offset_left = 80.0
+offset_right = 235.0
+offset_bottom = 55.0
+theme = SubResource("Theme_5p8wc")
+text = "Settings"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="value_changed" from="CenterContainer/VBoxContainer/Volume" to="." method="_on_volume_changed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/Back" to="." method="_on_back_pressed"]
