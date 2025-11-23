@@ -1,0 +1,53 @@
+[gd_scene load_steps=2 format=3 uid="uid://bu34inaxuad5q"]
+
+[ext_resource type="Script" uid="uid://m4mvb0lk8ub6" path="res://scripts/result_panel.gd" id="1_uc8ic"]
+
+[node name="ResultPanel" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_uc8ic")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+modulate = Color(0, 0, 0, 0.203922)
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 640.0
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 0
+offset_right = 1152.0
+offset_bottom = 648.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="ResultLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "YOU WON/LOOSE"
+horizontal_alignment = 1
+
+[node name="ScoreLabel" type="Label" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "932"
+horizontal_alignment = 1
+
+[node name="NextLevelButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "NEXT LEVEL"
+
+[node name="RetryButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "RETRY"
+
+[node name="LevelsButton" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "TO SELECT LEVEL"
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/NextLevelButton" to="." method="_on_next_level_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/RetryButton" to="." method="_on_retry_button_pressed"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/LevelsButton" to="." method="_on_levels_button_pressed"]

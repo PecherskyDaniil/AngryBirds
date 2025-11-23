@@ -17,8 +17,8 @@ default_font_size = 40
 script = ExtResource("1_bqqt6")
 
 [node name="Background" type="Sprite2D" parent="."]
-position = Vector2(575.99994, 323.99997)
-scale = Vector2(3.986159, 3.7241378)
+position = Vector2(576, 324)
+scale = Vector2(3.98616, 3.72414)
 texture = ExtResource("1_l6cm7")
 
 [node name="MarginContainer" type="CenterContainer" parent="."]
