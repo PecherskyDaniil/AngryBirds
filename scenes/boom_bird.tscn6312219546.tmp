@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://m3guppsu6c7i"]
+
+[ext_resource type="Texture2D" uid="uid://beav4n8mao1ft" path="res://assets/31cbcd967e539f76f32e1763b004d830.png" id="1_8x8su"]
+[ext_resource type="Script" uid="uid://60xy2s6iu7mn" path="res://scripts/boom_bird.gd" id="1_prj5j"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_prj5j"]
+radius = 19.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_vtlo7"]
+radius = 56.0357
+
+[node name="Boom bird" type="RigidBody2D"]
+contact_monitor = true
+script = ExtResource("1_prj5j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.6, 0.6)
+texture = ExtResource("1_8x8su")
+region_enabled = true
+region_rect = Rect2(608, 6, 66, 88)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 6)
+shape = SubResource("CircleShape2D_prj5j")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(0, 6)
+shape = SubResource("CircleShape2D_vtlo7")

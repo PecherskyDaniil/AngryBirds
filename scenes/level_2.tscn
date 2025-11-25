@@ -1,4 +1,4 @@
-[gd_scene load_steps=14 format=3 uid="uid://kq4xry13o7ue"]
+[gd_scene load_steps=15 format=3 uid="uid://kq4xry13o7ue"]
 
 [ext_resource type="Script" uid="uid://diomlblrboutv" path="res://scripts/level.gd" id="1_b4j7a"]
 [ext_resource type="Texture2D" uid="uid://e7atl18bwesx" path="res://assets/background.jpg" id="1_eqxsl"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://bhexw80nnyknk" path="res://scenes/fast_bird.tscn" id="6_y0kc7"]
 [ext_resource type="PackedScene" uid="uid://cs2gdi4gv64hs" path="res://scenes/pause.tscn" id="8_ne2mo"]
 [ext_resource type="PackedScene" uid="uid://bwxbvoquidg4p" path="res://scenes/glass_pallete.tscn" id="10_que50"]
+[ext_resource type="PackedScene" uid="uid://m3guppsu6c7i" path="res://scenes/boom_bird.tscn" id="11_hey2k"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ne2mo"]
 size = Vector2(26, 648)
@@ -100,13 +101,6 @@ position = Vector2(616, 408)
 [node name="pig3" parent="." instance=ExtResource("4_y0kc7")]
 position = Vector2(616, 480)
 
-[node name="bird2" parent="." instance=ExtResource("3_wo48x")]
-
-[node name="fast_bird2" parent="." instance=ExtResource("6_y0kc7")]
-
-[node name="fast_bird3" parent="." instance=ExtResource("6_y0kc7")]
-position = Vector2(-3, 0)
-
 [node name="catapult" parent="." instance=ExtResource("2_b4j7a")]
 position = Vector2(152, 576)
 
@@ -119,6 +113,11 @@ visible = false
 visible = false
 level_number = 1
 
+[node name="Boom bird" parent="." instance=ExtResource("11_hey2k")]
+
+[node name="Boom bird2" parent="." instance=ExtResource("11_hey2k")]
+position = Vector2(104, 31)
+
 [connection signal="score_event" from="pig" to="." method="get_score"]
 [connection signal="score_event" from="bird" to="." method="get_score"]
 [connection signal="score_event" from="fast_bird" to="." method="get_score"]
@@ -130,9 +129,6 @@ level_number = 1
 [connection signal="score_event" from="glass_pallete2" to="." method="get_score"]
 [connection signal="score_event" from="glass_pallete3" to="." method="get_score"]
 [connection signal="score_event" from="pig3" to="." method="get_score"]
-[connection signal="score_event" from="bird2" to="." method="get_score"]
-[connection signal="score_event" from="fast_bird2" to="." method="get_score"]
-[connection signal="score_event" from="fast_bird3" to="." method="get_score"]
 [connection signal="grab" from="catapult" to="." method="_on_catapult_grab"]
 [connection signal="release" from="catapult" to="." method="_on_catapult_release"]
 [connection signal="throw" from="catapult" to="." method="_on_catapult_throw"]

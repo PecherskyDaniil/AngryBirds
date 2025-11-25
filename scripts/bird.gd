@@ -7,6 +7,7 @@ const DEAD_TIME=5.0 # Время бездействия птички после 
 
 var is_active=false # Флаг того что птичку отправили в полет
 var dead_time_remains=DEAD_TIME # таймер на жизнь птички
+var punched=false#ударилась ли птичка
 func _ready() -> void:
 	self.set_max_contacts_reported(5) # это для обработки Прикосновений
 	# ВНИМАНИЕ ЕСЛИ БУДЕТЕ ДЕЛАТЬ НОВУЮ ПТИЧКУ ВКЛЮЧИТЕ ЕЙ (rigid body) ПАРАМЕТР CONTACT MONITOR - ON и MAX CONTACTS REPOTS - 5
@@ -16,7 +17,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	handle_collisions() # Обрабатываем прикосновения
-	if is_active and abs(linear_velocity.length())<10: # Чекаем жива ли
+	if is_active and punched: # Чекаем жива ли
 		dead_time_remains-=delta # если не особо то сокращаем жизнь
 	else:
 		dead_time_remains=DEAD_TIME # а если все норм то сбрасываем таймер
@@ -37,5 +38,6 @@ func to_active_state(): # в активное состояние для поле
 func handle_collisions(): # обрабатываем прикосновения
 	var colliders=self.get_colliding_bodies() # список касающихся объектов
 	for collider in colliders:
+		punched=true
 		if collider.has_method("damage") and self.linear_velocity.length()>20.0: # если можно ударить и скорость позволяет - то бьем
 			collider.damage(self.linear_velocity) # передаем скорость в функцию удара
