@@ -1,16 +1,17 @@
-[gd_scene load_steps=15 format=3 uid="uid://kq4xry13o7ue"]
+[gd_scene load_steps=16 format=3 uid="uid://kq4xry13o7ue"]
 
 [ext_resource type="Script" uid="uid://diomlblrboutv" path="res://scripts/level.gd" id="1_b4j7a"]
 [ext_resource type="Texture2D" uid="uid://e7atl18bwesx" path="res://assets/background.jpg" id="1_eqxsl"]
 [ext_resource type="PackedScene" uid="uid://hlbl5x723sv1" path="res://scenes/catapult.tscn" id="2_b4j7a"]
-[ext_resource type="PackedScene" uid="uid://bdouenfriv8rq" path="res://scenes/bird.tscn" id="3_wo48x"]
 [ext_resource type="PackedScene" uid="uid://vtfby340jagv" path="res://scenes/stone_pallete.tscn" id="4_6cvei"]
+[ext_resource type="PackedScene" uid="uid://csiljnkbumdeb" path="res://scenes/boomerang_bird.tscn" id="4_172wr"]
 [ext_resource type="PackedScene" uid="uid://bldbwx7l4pxk4" path="res://scenes/pig.tscn" id="4_y0kc7"]
 [ext_resource type="PackedScene" uid="uid://bu34inaxuad5q" path="res://scenes/result_panel.tscn" id="6_wo48x"]
-[ext_resource type="PackedScene" uid="uid://bhexw80nnyknk" path="res://scenes/fast_bird.tscn" id="6_y0kc7"]
 [ext_resource type="PackedScene" uid="uid://cs2gdi4gv64hs" path="res://scenes/pause.tscn" id="8_ne2mo"]
 [ext_resource type="PackedScene" uid="uid://bwxbvoquidg4p" path="res://scenes/glass_pallete.tscn" id="10_que50"]
 [ext_resource type="PackedScene" uid="uid://m3guppsu6c7i" path="res://scenes/boom_bird.tscn" id="11_hey2k"]
+[ext_resource type="PackedScene" uid="uid://6slojc48nbrm" path="res://scenes/baloon_bird.tscn" id="12_172wr"]
+[ext_resource type="PackedScene" uid="uid://cdoajdvjnx7m8" path="res://scenes/egg_bird.tscn" id="12_g2hoc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ne2mo"]
 size = Vector2(26, 648)
@@ -67,12 +68,13 @@ rotation = 1.5708
 position = Vector2(520, 584)
 rotation = 1.5708
 
+[node name="Boomerang bird" parent="." instance=ExtResource("4_172wr")]
+
+[node name="Egg bird" parent="." instance=ExtResource("12_g2hoc")]
+position = Vector2(-8, 0)
+
 [node name="pig" parent="." instance=ExtResource("4_y0kc7")]
 position = Vector2(568, 592)
-
-[node name="bird" parent="." instance=ExtResource("3_wo48x")]
-
-[node name="fast_bird" parent="." instance=ExtResource("6_y0kc7")]
 
 [node name="stone_pallete3" parent="." instance=ExtResource("4_6cvei")]
 position = Vector2(720, 584)
@@ -115,12 +117,10 @@ level_number = 1
 
 [node name="Boom bird" parent="." instance=ExtResource("11_hey2k")]
 
-[node name="Boom bird2" parent="." instance=ExtResource("11_hey2k")]
-position = Vector2(104, 31)
+[node name="Baloon bird" parent="." instance=ExtResource("12_172wr")]
+position = Vector2(0.99999994, 0)
 
 [connection signal="score_event" from="pig" to="." method="get_score"]
-[connection signal="score_event" from="bird" to="." method="get_score"]
-[connection signal="score_event" from="fast_bird" to="." method="get_score"]
 [connection signal="score_event" from="stone_pallete3" to="." method="get_score"]
 [connection signal="score_event" from="pig2" to="." method="get_score"]
 [connection signal="score_event" from="stone_pallete4" to="." method="get_score"]

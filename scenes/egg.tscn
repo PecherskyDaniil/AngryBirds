@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://db127mp4xso3v"]
+
+[ext_resource type="Texture2D" uid="uid://c7te8v7a2ld83" path="res://assets/egg.png" id="1_maxla"]
+[ext_resource type="Script" uid="uid://c3sxabct6a6rv" path="res://scripts/egg.gd" id="1_qlus4"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_maxla"]
+radius = 14.134606
+height = 36.0
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_qlus4"]
+radius = 30.016663
+
+[node name="Egg" type="RigidBody2D"]
+contact_monitor = true
+max_contacts_reported = 5
+script = ExtResource("1_qlus4")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_maxla")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, 1.0000001)
+rotation = 0.17453292
+shape = SubResource("CapsuleShape2D_maxla")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_qlus4")
