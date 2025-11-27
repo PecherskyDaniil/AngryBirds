@@ -21,7 +21,7 @@ var ready_bird:RigidBody2D=null # Птица на низком старте
 func _process(delta: float) -> void:
 	
 	handle_grab(delta) # обрабатываем хватания и отпускания
-	if grabbed: # Это для того чтобы птичка следовала за курсором
+	if grabbed and ready_bird !=null: # Это для того чтобы птичка следовала за курсором
 		if abs(get_global_mouse_position()-ready_position.global_position).length()>move_area_radius:
 			ready_bird.global_position=ready_position.global_position+(get_global_mouse_position()-ready_position.global_position).normalized()*move_area_radius
 		else:

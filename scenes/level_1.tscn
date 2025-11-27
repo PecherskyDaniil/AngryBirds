@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://e5o2vxd2ty7t"]
+[gd_scene load_steps=14 format=3 uid="uid://e5o2vxd2ty7t"]
 
 [ext_resource type="PackedScene" uid="uid://hlbl5x723sv1" path="res://scenes/catapult.tscn" id="1_bswci"]
 [ext_resource type="Script" uid="uid://diomlblrboutv" path="res://scripts/level.gd" id="1_rus8k"]
@@ -6,8 +6,12 @@
 [ext_resource type="PackedScene" uid="uid://bdouenfriv8rq" path="res://scenes/bird.tscn" id="2_rus8k"]
 [ext_resource type="PackedScene" uid="uid://gvjid20i1c4v" path="res://scenes/wood_pallete.tscn" id="4_5xbjy"]
 [ext_resource type="PackedScene" uid="uid://bldbwx7l4pxk4" path="res://scenes/pig.tscn" id="5_4nkto"]
+[ext_resource type="PackedScene" uid="uid://bhexw80nnyknk" path="res://scenes/fast_bird.tscn" id="7_e3sih"]
 [ext_resource type="PackedScene" uid="uid://bu34inaxuad5q" path="res://scenes/result_panel.tscn" id="7_pa8r4"]
 [ext_resource type="PackedScene" uid="uid://cs2gdi4gv64hs" path="res://scenes/pause.tscn" id="8_15mv3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_e3sih"]
+size = Vector2(1160, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_fcfvj"]
 size = Vector2(32, 648)
@@ -25,6 +29,13 @@ script = ExtResource("1_rus8k")
 position = Vector2(577, 328)
 scale = Vector2(1.21053, 1.35021)
 texture = ExtResource("2_fcfvj")
+
+[node name="up" type="StaticBody2D" parent="."]
+position = Vector2(100, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="up"]
+position = Vector2(480, 0)
+shape = SubResource("RectangleShape2D_e3sih")
 
 [node name="left_wall" type="StaticBody2D" parent="."]
 
@@ -68,6 +79,10 @@ position = Vector2(683, 587)
 
 [node name="bird3" parent="." instance=ExtResource("2_rus8k")]
 
+[node name="fast_bird" parent="." instance=ExtResource("7_e3sih")]
+
+[node name="fast_bird2" parent="." instance=ExtResource("7_e3sih")]
+
 [node name="Score_anim_label" type="Label" parent="."]
 modulate = Color(1, 1, 1, 0)
 self_modulate = Color(0, 0, 0, 1)
@@ -79,12 +94,14 @@ text = "Something"
 
 [node name="ResultPanel" parent="." instance=ExtResource("7_pa8r4")]
 visible = false
+z_index = 12
 
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(576, 332)
 
 [node name="Pause" parent="." instance=ExtResource("8_15mv3")]
 visible = false
+z_index = 5
 
 [connection signal="grab" from="catapult" to="." method="_on_catapult_grab"]
 [connection signal="release" from="catapult" to="." method="_on_catapult_release"]
@@ -96,3 +113,5 @@ visible = false
 [connection signal="score_event" from="wood_pallete3" to="." method="get_score"]
 [connection signal="score_event" from="pig" to="." method="get_score"]
 [connection signal="score_event" from="bird3" to="." method="get_score"]
+[connection signal="score_event" from="fast_bird" to="." method="get_score"]
+[connection signal="score_event" from="fast_bird2" to="." method="get_score"]

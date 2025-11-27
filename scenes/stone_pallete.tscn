@@ -6,8 +6,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_b5gyw"]
 size = Vector2(204, 22)
 
-[sub_resource type="Animation" id="Animation_ylx11"]
-resource_name = "damage0"
+[sub_resource type="Animation" id="Animation_mdrv6"]
+length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -57,8 +57,8 @@ tracks/3/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_mdrv6"]
-length = 0.001
+[sub_resource type="Animation" id="Animation_ylx11"]
+resource_name = "damage0"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true

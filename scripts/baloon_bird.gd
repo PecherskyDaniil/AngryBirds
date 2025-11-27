@@ -11,7 +11,7 @@ var is_active=false # флаг на кидание
 var dead_time_remains=DEAD_TIME #таймер смерти
 var ability_used=false # флаг что абилка юзнута
 var punched=false
-@onready var anim:AnimationPlayer=$AnimationPlayer
+@onready var anim:AnimationPlayer=get_node("AnimationPlayer")
 func _ready() -> void:
 	self.set_max_contacts_reported(5)
 	self.contact_monitor=true
@@ -38,6 +38,7 @@ func to_passive_state():
 	self.freeze=true
 
 func to_active_state():
+	anim.play("small")
 	is_active=true
 	collision.disabled=false
 	self.freeze=false

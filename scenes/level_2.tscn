@@ -1,17 +1,18 @@
-[gd_scene load_steps=16 format=3 uid="uid://kq4xry13o7ue"]
+[gd_scene load_steps=15 format=3 uid="uid://kq4xry13o7ue"]
 
 [ext_resource type="Script" uid="uid://diomlblrboutv" path="res://scripts/level.gd" id="1_b4j7a"]
 [ext_resource type="Texture2D" uid="uid://e7atl18bwesx" path="res://assets/background.jpg" id="1_eqxsl"]
 [ext_resource type="PackedScene" uid="uid://hlbl5x723sv1" path="res://scenes/catapult.tscn" id="2_b4j7a"]
 [ext_resource type="PackedScene" uid="uid://vtfby340jagv" path="res://scenes/stone_pallete.tscn" id="4_6cvei"]
-[ext_resource type="PackedScene" uid="uid://csiljnkbumdeb" path="res://scenes/boomerang_bird.tscn" id="4_172wr"]
 [ext_resource type="PackedScene" uid="uid://bldbwx7l4pxk4" path="res://scenes/pig.tscn" id="4_y0kc7"]
 [ext_resource type="PackedScene" uid="uid://bu34inaxuad5q" path="res://scenes/result_panel.tscn" id="6_wo48x"]
 [ext_resource type="PackedScene" uid="uid://cs2gdi4gv64hs" path="res://scenes/pause.tscn" id="8_ne2mo"]
 [ext_resource type="PackedScene" uid="uid://bwxbvoquidg4p" path="res://scenes/glass_pallete.tscn" id="10_que50"]
 [ext_resource type="PackedScene" uid="uid://m3guppsu6c7i" path="res://scenes/boom_bird.tscn" id="11_hey2k"]
-[ext_resource type="PackedScene" uid="uid://6slojc48nbrm" path="res://scenes/baloon_bird.tscn" id="12_172wr"]
 [ext_resource type="PackedScene" uid="uid://cdoajdvjnx7m8" path="res://scenes/egg_bird.tscn" id="12_g2hoc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hey2k"]
+size = Vector2(1160, 20)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ne2mo"]
 size = Vector2(26, 648)
@@ -31,6 +32,13 @@ MAX_SCORE = 1400.0
 position = Vector2(576, 324)
 scale = Vector2(1.21263, 1.36709)
 texture = ExtResource("1_eqxsl")
+
+[node name="up" type="StaticBody2D" parent="."]
+position = Vector2(200, 0)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="up"]
+position = Vector2(380, 0)
+shape = SubResource("RectangleShape2D_hey2k")
 
 [node name="left_wall" type="StaticBody2D" parent="."]
 position = Vector2(0, 16.005)
@@ -67,8 +75,6 @@ rotation = 1.5708
 [node name="stone_pallete2" parent="." instance=ExtResource("4_6cvei")]
 position = Vector2(520, 584)
 rotation = 1.5708
-
-[node name="Boomerang bird" parent="." instance=ExtResource("4_172wr")]
 
 [node name="Egg bird" parent="." instance=ExtResource("12_g2hoc")]
 position = Vector2(-8, 0)
@@ -108,18 +114,26 @@ position = Vector2(152, 576)
 
 [node name="ResultPanel" parent="." instance=ExtResource("6_wo48x")]
 visible = false
+z_index = 12
 
 [node name="Camera2D" type="Camera2D" parent="."]
 
 [node name="Pause" parent="." instance=ExtResource("8_ne2mo")]
 visible = false
+z_index = 5
 level_number = 1
 
 [node name="Boom bird" parent="." instance=ExtResource("11_hey2k")]
 
-[node name="Baloon bird" parent="." instance=ExtResource("12_172wr")]
-position = Vector2(0.99999994, 0)
+[node name="Boom bird3" parent="." instance=ExtResource("11_hey2k")]
 
+[node name="Egg bird2" parent="." instance=ExtResource("12_g2hoc")]
+
+[node name="Boom bird2" parent="." instance=ExtResource("11_hey2k")]
+
+[connection signal="score_event" from="stone_pallete" to="." method="get_score"]
+[connection signal="score_event" from="stone_pallete2" to="." method="get_score"]
+[connection signal="score_event" from="Egg bird" to="." method="get_score"]
 [connection signal="score_event" from="pig" to="." method="get_score"]
 [connection signal="score_event" from="stone_pallete3" to="." method="get_score"]
 [connection signal="score_event" from="pig2" to="." method="get_score"]
@@ -132,3 +146,7 @@ position = Vector2(0.99999994, 0)
 [connection signal="grab" from="catapult" to="." method="_on_catapult_grab"]
 [connection signal="release" from="catapult" to="." method="_on_catapult_release"]
 [connection signal="throw" from="catapult" to="." method="_on_catapult_throw"]
+[connection signal="score_event" from="Boom bird" to="." method="get_score"]
+[connection signal="score_event" from="Boom bird3" to="." method="get_score"]
+[connection signal="score_event" from="Egg bird2" to="." method="get_score"]
+[connection signal="score_event" from="Boom bird2" to="." method="get_score"]
