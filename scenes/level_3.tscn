@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://b524rjulqbbkv"]
 
 [ext_resource type="Script" uid="uid://diomlblrboutv" path="res://scripts/level.gd" id="1_ax3dk"]
-[ext_resource type="Texture2D" uid="uid://e7atl18bwesx" path="res://assets/background.jpg" id="2_q2dsb"]
+[ext_resource type="PackedScene" uid="uid://c6ygsh7lecx46" path="res://scenes/background.tscn" id="2_56dhn"]
 [ext_resource type="PackedScene" uid="uid://vtfby340jagv" path="res://scenes/stone_pallete.tscn" id="3_p3r0x"]
 [ext_resource type="PackedScene" uid="uid://csiljnkbumdeb" path="res://scenes/boomerang_bird.tscn" id="4_5xqnf"]
 [ext_resource type="PackedScene" uid="uid://gvjid20i1c4v" path="res://scenes/wood_pallete.tscn" id="4_q2dsb"]
@@ -29,10 +29,7 @@ script = ExtResource("1_ax3dk")
 level_number = 2
 MAX_SCORE = 1400.0
 
-[node name="background" type="Sprite2D" parent="."]
-position = Vector2(576, 324)
-scale = Vector2(1.21263, 1.36709)
-texture = ExtResource("2_q2dsb")
+[node name="background" parent="." instance=ExtResource("2_56dhn")]
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

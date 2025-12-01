@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://hlbl5x723sv1" path="res://scenes/catapult.tscn" id="1_bswci"]
 [ext_resource type="Script" uid="uid://diomlblrboutv" path="res://scripts/level.gd" id="1_rus8k"]
-[ext_resource type="Texture2D" uid="uid://e7atl18bwesx" path="res://assets/background.jpg" id="2_fcfvj"]
+[ext_resource type="PackedScene" uid="uid://c6ygsh7lecx46" path="res://scenes/background.tscn" id="2_e3sih"]
 [ext_resource type="PackedScene" uid="uid://bdouenfriv8rq" path="res://scenes/bird.tscn" id="2_rus8k"]
 [ext_resource type="PackedScene" uid="uid://gvjid20i1c4v" path="res://scenes/wood_pallete.tscn" id="4_5xbjy"]
 [ext_resource type="PackedScene" uid="uid://bldbwx7l4pxk4" path="res://scenes/pig.tscn" id="5_4nkto"]
@@ -25,10 +25,7 @@ size = Vector2(1153, 24)
 [node name="level1" type="Node2D"]
 script = ExtResource("1_rus8k")
 
-[node name="background" type="Sprite2D" parent="."]
-position = Vector2(577, 328)
-scale = Vector2(1.21053, 1.35021)
-texture = ExtResource("2_fcfvj")
+[node name="background" parent="." instance=ExtResource("2_e3sih")]
 
 [node name="up" type="StaticBody2D" parent="."]
 position = Vector2(100, 0)

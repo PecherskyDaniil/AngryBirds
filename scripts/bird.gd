@@ -3,7 +3,7 @@ extends RigidBody2D
 signal score_event(name,score_amount,pos) #сигнал для считывания смерти птички и очков за смерть. Привязывать к get_score узла уровня 
 
 @onready var collision:CollisionShape2D=get_node("CollisionShape2D") #колизии птички
-const DEAD_TIME=5.0 # Время бездействия птички после которого она умирает
+const DEAD_TIME=3.0 # Время бездействия птички после которого она умирает
 
 var is_active=false # Флаг того что птичку отправили в полет
 var dead_time_remains=DEAD_TIME # таймер на жизнь птички

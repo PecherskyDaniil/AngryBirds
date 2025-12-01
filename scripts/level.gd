@@ -78,6 +78,7 @@ func get_score(event_name:String,rewarded_score:int,pos:Vector2):
 		"pig_killed":
 			pigs_count-=1
 		"bird_died":
+			detect_object=null
 			bird_count-=1
 	
 	if pigs_count==0:
@@ -108,12 +109,14 @@ func handle_camera(delta):
 		camera_detect()
 
 func move_camera_to_base():
+	detect_object=catapult
 	camera.global_position=Vector2(576.0,332.0)
-	camera.zoom=Vector2(1.0,1.0)
+	camera.zoom=Vector2(1.3,1.3)
 
 func camera_detect():
 	camera.global_position=detect_object.global_position
-	camera.zoom=Vector2(1.5,1.5)
+	camera.global_position.y+=40
+	
 
 
 
@@ -121,14 +124,17 @@ func camera_detect():
 func _on_catapult_grab(object: Variant) -> void:
 	print("grab")
 	detect_object=object
+	camera.zoom=Vector2(1.0,1.0)
 
 
 
 func _on_catapult_release() -> void:
 	print("release")
 	detect_object=null
+	camera.zoom=Vector2(1.3,1.3)
 
 
 
 func _on_catapult_throw(bird: Variant) -> void:
-	detect_object=null
+	detect_object=bird
+	camera.zoom=Vector2(1.3,1.3)
