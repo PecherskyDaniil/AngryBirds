@@ -288,3 +288,8 @@ region_rect = Rect2(253, 204, 202.94, 19.3539)
 libraries = {
 &"": SubResource("AnimationLibrary_fivxm")
 }
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+volume_db = -40.0
+
+[connection signal="finished" from="AudioStreamPlayer" to="." method="_on_audio_stream_player_finished"]

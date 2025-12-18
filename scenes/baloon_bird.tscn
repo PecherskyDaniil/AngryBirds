@@ -166,7 +166,7 @@ tracks/5/keys = {
 "times": PackedFloat32Array(0, 0.12, 0.24, 0.34, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.0, 0.34906584, -0.34906584, 0.34906584, 0.0]
+"values": [0.0, 0.349066, -0.349066, 0.349066, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_n5ogc"]
@@ -257,7 +257,7 @@ max_contacts_reported = 5
 script = ExtResource("1_n5ogc")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-position = Vector2(0, 11.999999)
+position = Vector2(0, 12)
 scale = Vector2(0.3, 0.3)
 texture = ExtResource("2_n5ogc")
 region_enabled = true

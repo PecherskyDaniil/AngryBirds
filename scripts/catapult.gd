@@ -13,8 +13,9 @@ var birds:Array[RigidBody2D]=[] # Список птичек в катапуль�
 var grabbed=false # Флаг на хвататние птичики
 @onready var bucket:Node2D=get_node("bucket") # Ведро с птицами
 @onready var ready_position=get_node("ready_position") # Спот для птицы на низком старте
-
-
+@onready var audio_player:AudioStreamPlayer=get_node("AudioStreamPlayer")
+@onready var rubby_sound=preload("res://audio/rubby.mp3")
+@onready var throw_sound=preload("res://audio/throw.mp3")
 
 var ready_bird:RigidBody2D=null # Птица на низком старте
 
@@ -22,6 +23,8 @@ func _process(delta: float) -> void:
 	
 	handle_grab(delta) # обрабатываем хватания и отпускания
 	if grabbed and ready_bird !=null: # Это для того чтобы птичка следовала за курсором
+		if not(audio_player.playing):
+			audio_player.play(0.0)
 		if abs(get_global_mouse_position()-ready_position.global_position).length()>move_area_radius:
 			ready_bird.global_position=ready_position.global_position+(get_global_mouse_position()-ready_position.global_position).normalized()*move_area_radius
 		else:
@@ -38,12 +41,16 @@ func handle_grab(delta): # Обработка взятий,отпусканий 
 	if Input.is_action_just_pressed("grab") and abs(get_global_mouse_position()-ready_position.global_position).length()<grab_area_radius: # Если взяли в области то хватаем птичку
 		grabbed=true
 		grab.emit(self)
+		audio_player.stream=rubby_sound
 	if Input.is_action_just_released("grab") and grabbed:# Если отпустили
 		grabbed=false # от отпускаем
 		if abs(get_global_mouse_position()-ready_position.global_position).length()<grab_area_radius: # Если мало оттянули - кладем на место
 			release.emit()
 			ready_bird.global_position=ready_position.global_position
 		else:# Иначе отправляем в полет
+			audio_player.stop()
+			audio_player.stream=throw_sound
+			audio_player.play(0.0)
 			var move_vector=THROW_STRENGTH*-1*(ready_bird.global_position-ready_position.global_position)
 			ready_position.remove_child(ready_bird)
 			get_parent().add_child(ready_bird)
