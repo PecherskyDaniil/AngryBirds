@@ -1,16 +1,20 @@
-[gd_scene load_steps=7 format=3 uid="uid://dbb8m5jcvn8cp"]
+[gd_scene load_steps=8 format=3 uid="uid://dbb8m5jcvn8cp"]
 
 [ext_resource type="Script" uid="uid://dn8y722l0ttcw" path="res://scripts/main_menu.gd" id="1_bqqt6"]
-[ext_resource type="Texture2D" uid="uid://bgoay43pyo0u4" path="res://assets/background_main_menu.jpg" id="1_l6cm7"]
+[ext_resource type="Texture2D" uid="uid://lxe3jgt2c3xv" path="res://assets/menu-background.png" id="2_bqqt6"]
 [ext_resource type="PackedScene" uid="uid://bd5fhsl77te4t" path="res://scenes/settings.tscn" id="2_ekxnf"]
+[ext_resource type="FontFile" uid="uid://byal6ltj6lb62" path="res://assets/angry-prepods.ttf" id="3_wu84c"]
 
 [sub_resource type="Theme" id="Theme_bqqt6"]
+default_font = ExtResource("3_wu84c")
 default_font_size = 40
 
 [sub_resource type="Theme" id="Theme_wu84c"]
+default_font = ExtResource("3_wu84c")
 default_font_size = 40
 
 [sub_resource type="Theme" id="Theme_8ln24"]
+default_font = ExtResource("3_wu84c")
 default_font_size = 40
 
 [node name="Main menu" type="Node2D"]
@@ -18,8 +22,8 @@ script = ExtResource("1_bqqt6")
 
 [node name="Background" type="Sprite2D" parent="."]
 position = Vector2(576, 324)
-scale = Vector2(3.98616, 3.72414)
-texture = ExtResource("1_l6cm7")
+scale = Vector2(1, 0.934)
+texture = ExtResource("2_bqqt6")
 
 [node name="MarginContainer" type="CenterContainer" parent="."]
 offset_top = 16.0
@@ -32,17 +36,17 @@ layout_mode = 2
 [node name="Play" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_bqqt6")
-text = "Play"
+text = "PLAY"
 
 [node name="Settings" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_wu84c")
-text = "Settings"
+text = "SETTINGS"
 
 [node name="Exit" type="Button" parent="MarginContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_8ln24")
-text = "Exit"
+text = "EXIT"
 
 [node name="Settings" parent="." instance=ExtResource("2_ekxnf")]
 visible = false

@@ -46,7 +46,7 @@ func handle_ability():
 
 func ability():
 	var sprite=$Sprite2D
-	sprite.region_rect=Rect2(482.0,400.0,70.0,88.0)
+	sprite.region_rect=Rect2(376.0,68.0,112.0,156.0)
 	var bodies = explosion.get_overlapping_bodies()
 	for body in bodies:
 		if body is RigidBody2D and body.has_method("damage"):
@@ -55,7 +55,7 @@ func ability():
 			var force_magnitude = 10000  # настройте по желанию
 			var impulse = direction * force_magnitude
 			body.apply_central_impulse(impulse)
-			body.damage(Vector2(100,100))
+			body.damage(Vector2(1000,1000))
 
 func handle_collisions():
 	var colliders=self.get_colliding_bodies()

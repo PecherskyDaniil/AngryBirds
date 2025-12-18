@@ -1,7 +1,6 @@
-[gd_scene load_steps=4 format=3 uid="uid://bldbwx7l4pxk4"]
+[gd_scene load_steps=3 format=3 uid="uid://bldbwx7l4pxk4"]
 
 [ext_resource type="Script" uid="uid://c00mbjb32syal" path="res://scripts/pig.gd" id="1_4a8uq"]
-[ext_resource type="Texture2D" uid="uid://b5uoiu6jon1hs" path="res://assets/pig.webp" id="1_sq5kf"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_4a8uq"]
 radius = 28.0179
@@ -13,5 +12,4 @@ script = ExtResource("1_4a8uq")
 shape = SubResource("CircleShape2D_4a8uq")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("1_sq5kf")
+scale = Vector2(0.07, 0.07)

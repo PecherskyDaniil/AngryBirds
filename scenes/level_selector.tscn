@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://mqa2j2ie8fcl"]
 
-[ext_resource type="Texture2D" uid="uid://boqyujb1yebpi" path="res://assets/level selecter.png" id="1_aeu7d"]
 [ext_resource type="Script" uid="uid://bsorthe7gcg0c" path="res://scripts/level_selector.gd" id="1_gkmvm"]
+[ext_resource type="Texture2D" uid="uid://e7ag5ne6bmve" path="res://assets/map.png" id="2_gkmvm"]
 
 [sub_resource type="Theme" id="Theme_aeu7d"]
 default_font_size = 40
@@ -12,7 +12,7 @@ script = ExtResource("1_gkmvm")
 [node name="LevelSelecter" type="Sprite2D" parent="."]
 position = Vector2(577, 323)
 scale = Vector2(0.901254, 0.89779)
-texture = ExtResource("1_aeu7d")
+texture = ExtResource("2_gkmvm")
 
 [node name="Back" type="Button" parent="."]
 offset_left = 16.0
@@ -21,5 +21,9 @@ offset_right = 61.0
 offset_bottom = 47.0
 theme = SubResource("Theme_aeu7d")
 text = "Back"
+
+[node name="Line2D" type="Line2D" parent="."]
+visible = false
+points = PackedVector2Array(72, 400, 272, 312, 424, 416, 576, 512, 736, 440, 976, 288, 1080, 256)
 
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

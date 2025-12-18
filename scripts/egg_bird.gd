@@ -5,6 +5,7 @@ extends RigidBody2D
 signal score_event(name,score_amount,pos)# сигнал для обработки смерти птички и чтоб считать очки
 
 @onready var collision:CollisionShape2D=get_node("CollisionShape2D") # колизии
+@onready var sprite:Sprite2D=$Sprite2D
 const DEAD_TIME=3.0 # время смерти, дад дада
 
 var is_active=false # флаг на кидание
@@ -46,6 +47,7 @@ func handle_ability():
 
 func ability():
 	self.linear_velocity.y-=500
+	sprite.region_rect=Rect2(360,60,156,172)
 	var egg1=egg.instantiate()
 	egg1.global_position=global_position
 	egg1.global_position.y+=40

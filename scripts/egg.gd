@@ -29,4 +29,4 @@ func explode():
 			var force_magnitude = 10000  # настройте по желанию
 			var impulse = direction * force_magnitude
 			body.apply_central_impulse(impulse)
-			body.damage(Vector2(100,100))
+			body.damage(Vector2(1000,1000))

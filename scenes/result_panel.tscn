@@ -1,6 +1,23 @@
-[gd_scene load_steps=2 format=3 uid="uid://bu34inaxuad5q"]
+[gd_scene load_steps=9 format=3 uid="uid://bu34inaxuad5q"]
 
 [ext_resource type="Script" uid="uid://m4mvb0lk8ub6" path="res://scripts/result_panel.gd" id="1_uc8ic"]
+[ext_resource type="Texture2D" uid="uid://cokwhh2jcrhge" path="res://assets/leader-board.png" id="2_is2qv"]
+[ext_resource type="FontFile" uid="uid://byal6ltj6lb62" path="res://assets/angry-prepods.ttf" id="3_cvt7p"]
+
+[sub_resource type="Theme" id="Theme_jdpk8"]
+default_font = ExtResource("3_cvt7p")
+
+[sub_resource type="Theme" id="Theme_lvsew"]
+default_font = ExtResource("3_cvt7p")
+
+[sub_resource type="Theme" id="Theme_gd2d5"]
+default_font = ExtResource("3_cvt7p")
+
+[sub_resource type="Theme" id="Theme_k5fo1"]
+default_font = ExtResource("3_cvt7p")
+
+[sub_resource type="Theme" id="Theme_nfaii"]
+default_font = ExtResource("3_cvt7p")
 
 [node name="ResultPanel" type="Control"]
 process_mode = 3
@@ -18,6 +35,15 @@ layout_mode = 0
 offset_right = 1152.0
 offset_bottom = 640.0
 
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 0
+offset_left = 256.0
+offset_top = 88.0
+offset_right = 896.0
+offset_bottom = 560.0
+texture = ExtResource("2_is2qv")
+expand_mode = 1
+
 [node name="CenterContainer" type="CenterContainer" parent="."]
 layout_mode = 0
 offset_right = 1152.0
@@ -28,24 +54,29 @@ layout_mode = 2
 
 [node name="ResultLabel" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme = SubResource("Theme_jdpk8")
 text = "YOU WON/LOOSE"
 horizontal_alignment = 1
 
 [node name="ScoreLabel" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme = SubResource("Theme_lvsew")
 text = "932"
 horizontal_alignment = 1
 
 [node name="NextLevelButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme = SubResource("Theme_gd2d5")
 text = "NEXT LEVEL"
 
 [node name="RetryButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme = SubResource("Theme_k5fo1")
 text = "RETRY"
 
 [node name="LevelsButton" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
+theme = SubResource("Theme_nfaii")
 text = "TO SELECT LEVEL"
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/NextLevelButton" to="." method="_on_next_level_button_pressed"]

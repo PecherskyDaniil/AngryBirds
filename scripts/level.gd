@@ -21,7 +21,7 @@ var pigs_count=0
 var tween: Tween
 
 var camera_tween:Tween
-
+var bird_throwed=false
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("pause") and not won:
@@ -31,6 +31,10 @@ func _input(event: InputEvent) -> void:
 		else:
 			pause.visible=true
 			Autoload.pause()
+	elif event.is_action_pressed("skip") and bird_throwed:
+		detect_object=null
+		move_camera_to_base()
+		bird_throwed=false
 
 func show_text_at_position(text: String, pos: Vector2, duration: float = 1.0):
 	# Устанавливаем текст и позицию
@@ -78,7 +82,6 @@ func get_score(event_name:String,rewarded_score:int,pos:Vector2):
 		"pig_killed":
 			pigs_count-=1
 		"bird_died":
-			detect_object=null
 			bird_count-=1
 	
 	if pigs_count==0:
@@ -95,10 +98,14 @@ func count_all_pigs():
 			pigs_count+=1
 
 func win():
+	detect_object = null
+	move_camera_to_base()
 	Autoload.progress[level_number][0]=int((float(score)/MAX_SCORE)*3.0)
 	result_panel.appear(level_number,"win",score)
 	
 func loose():
+	detect_object = null
+	move_camera_to_base()
 	result_panel.appear(level_number,"loose",0)
 
 
@@ -111,10 +118,10 @@ func handle_camera(delta):
 func move_camera_to_base():
 	detect_object=catapult
 	camera.global_position=Vector2(576.0,332.0)
-	camera.zoom=Vector2(1.3,1.3)
+	camera.zoom=Vector2(1.0,1.0)
 
 func camera_detect():
-	camera.global_position=detect_object.global_position
+	camera.global_position.x=detect_object.global_position.x
 	camera.global_position.y+=40
 	
 
@@ -122,19 +129,22 @@ func camera_detect():
 
 
 func _on_catapult_grab(object: Variant) -> void:
-	print("grab")
-	detect_object=object
-	camera.zoom=Vector2(1.0,1.0)
+	pass
+	#print("grab")
+	#detect_object=object
+	#camera.zoom=Vector2(1.0,1.0)
 
 
 
 func _on_catapult_release() -> void:
-	print("release")
-	detect_object=null
-	camera.zoom=Vector2(1.3,1.3)
+	pass
+	#print("release")
+	#detect_object=null
+	#camera.zoom=Vector2(1.3,1.3)
 
 
 
 func _on_catapult_throw(bird: Variant) -> void:
 	detect_object=bird
 	camera.zoom=Vector2(1.3,1.3)
+	bird_throwed=true

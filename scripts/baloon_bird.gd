@@ -5,7 +5,7 @@ extends RigidBody2D
 signal score_event(name,score_amount,pos)# сигнал для обработки смерти птички и чтоб считать очки
 
 @onready var collision:CollisionShape2D=get_node("CollisionShape2D") # колизии
-const DEAD_TIME=5.0 # время смерти, дад дада
+const DEAD_TIME=3.0 # время смерти, дад дада
 
 var is_active=false # флаг на кидание
 var dead_time_remains=DEAD_TIME #таймер смерти
@@ -25,7 +25,7 @@ func _process(delta: float) -> void:
 		dead_time_remains-=delta
 	else:
 		dead_time_remains=DEAD_TIME
-	if dead_time_remains<=4.0 and !ability_used:
+	if dead_time_remains<=1.0 and !ability_used:
 		ability()
 		ability_used=true
 	if dead_time_remains<=0:
