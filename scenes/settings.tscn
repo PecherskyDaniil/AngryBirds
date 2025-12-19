@@ -1,29 +1,35 @@
-[gd_scene load_steps=6 format=3 uid="uid://bd5fhsl77te4t"]
+[gd_scene load_steps=8 format=3 uid="uid://bd5fhsl77te4t"]
 
 [ext_resource type="Texture2D" uid="uid://cn0y3rngqi21d" path="res://assets/settings_background.png" id="1_5p8wc"]
 [ext_resource type="Script" uid="uid://ct7lqolj177ea" path="res://scripts/settings.gd" id="1_r6d6q"]
+[ext_resource type="FontFile" uid="uid://byal6ltj6lb62" path="res://assets/angry-prepods.ttf" id="3_f4mfi"]
+[ext_resource type="FontFile" uid="uid://cv4k0u4mnul0a" path="res://assets/angry-prepods.woff" id="4_es4n0"]
 
 [sub_resource type="Theme" id="Theme_r6d6q"]
+default_font = ExtResource("3_f4mfi")
 default_font_size = 35
 
 [sub_resource type="Theme" id="Theme_6wm04"]
+default_font = ExtResource("3_f4mfi")
 default_font_size = 30
 
-[sub_resource type="Theme" id="Theme_5p8wc"]
-default_font_size = 40
+[sub_resource type="Theme" id="Theme_f4mfi"]
+default_font = ExtResource("4_es4n0")
+default_font_size = 25
 
 [node name="Settings" type="Node2D"]
 script = ExtResource("1_r6d6q")
 
 [node name="SettingsBackground" type="Sprite2D" parent="."]
-position = Vector2(160, 112)
-scale = Vector2(0.278481, 0.358333)
+position = Vector2(161, 121)
+scale = Vector2(0.502079, 0.549726)
 texture = ExtResource("1_5p8wc")
 
 [node name="CenterContainer" type="CenterContainer" parent="."]
-offset_top = 16.0
-offset_right = 320.0
-offset_bottom = 224.0
+offset_left = -52.0
+offset_top = 20.0
+offset_right = 375.0
+offset_bottom = 243.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
 layout_mode = 2
@@ -32,7 +38,7 @@ theme_override_constants/separation = 10
 [node name="VolumeLabel" type="Label" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_r6d6q")
-text = "Volume"
+text = "VOLUME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -42,14 +48,15 @@ layout_mode = 2
 [node name="Back" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
 theme = SubResource("Theme_6wm04")
-text = "Back"
+text = "BACK"
 
 [node name="SettingsLabel" type="Label" parent="."]
-offset_left = 80.0
-offset_right = 235.0
-offset_bottom = 55.0
-theme = SubResource("Theme_5p8wc")
-text = "Settings"
+offset_left = 81.0
+offset_top = -12.0
+offset_right = 236.0
+offset_bottom = 43.0
+theme = SubResource("Theme_f4mfi")
+text = "SETTINGS"
 horizontal_alignment = 1
 vertical_alignment = 1
 

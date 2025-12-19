@@ -10,6 +10,7 @@ signal score_event(name,score_amount,pos)# сигнал для обработк�
 @onready var collision_sound=preload("res://audio/birds_sounds/bird-02-collision-a4.mp3")
 @onready var ability_sound=preload("res://audio/birds_sounds/zvuk-vzryva.mp3")
 @onready var die_sound=preload("res://audio/birds_sounds/bird-destroyed.mp3")
+@onready var anim_player=$AnimationPlayer
 const DEAD_TIME=2.0 # время смерти, дад дада
 
 var is_active=false # флаг на кидание
@@ -17,6 +18,7 @@ var dead_time_remains=DEAD_TIME #таймер смерти
 var ability_used=false # флаг что абилка юзнута
 var punched = false
 func _ready() -> void:
+	anim_player.play("idle")
 	audio_player.volume_db=-40.0
 	self.set_max_contacts_reported(5)
 	self.contact_monitor=true
@@ -55,6 +57,7 @@ func handle_ability():
 		ability_used=true
 
 func ability():
+	anim_player.play("boom")
 	var sprite=$Sprite2D
 	sprite.region_rect=Rect2(376.0,68.0,112.0,156.0)
 	var bodies = explosion.get_overlapping_bodies()

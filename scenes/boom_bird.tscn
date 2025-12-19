@@ -1,13 +1,91 @@
-[gd_scene load_steps=5 format=3 uid="uid://m3guppsu6c7i"]
+[gd_scene load_steps=10 format=3 uid="uid://m3guppsu6c7i"]
 
 [ext_resource type="Script" uid="uid://60xy2s6iu7mn" path="res://scripts/boom_bird.gd" id="1_prj5j"]
 [ext_resource type="Texture2D" uid="uid://c3d0fu2poph0y" path="res://assets/second-bird.png" id="2_prj5j"]
+[ext_resource type="Texture2D" uid="uid://8vfujxmuh7sq" path="res://assets/ai-generated-an-explosion-isolated-on-a-transparent-background-free-png.webp" id="3_vtlo7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_prj5j"]
 radius = 19.0
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_vtlo7"]
 radius = 56.0357
+
+[sub_resource type="Animation" id="Animation_2aprf"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_ipm3o"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0.0385417, 0.0539062)]
+}
+
+[sub_resource type="Animation" id="Animation_6t2ic"]
+resource_name = "boom"
+length = 0.3
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D2:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.15, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sprite2D2:scale")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.218024),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0.0385417, 0.0539062), Vector2(0.116667, 0.138)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_f3wvw"]
+_data = {
+&"RESET": SubResource("Animation_ipm3o"),
+&"boom": SubResource("Animation_6t2ic"),
+&"idle": SubResource("Animation_2aprf")
+}
 
 [node name="Boom bird" type="RigidBody2D"]
 contact_monitor = true
@@ -32,3 +110,14 @@ position = Vector2(0, 6)
 shape = SubResource("CircleShape2D_vtlo7")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_f3wvw")
+}
+
+[node name="Sprite2D2" type="Sprite2D" parent="."]
+modulate = Color(1, 1, 1, 0)
+position = Vector2(1.90735e-06, 0)
+scale = Vector2(0.0385417, 0.0539062)
+texture = ExtResource("3_vtlo7")

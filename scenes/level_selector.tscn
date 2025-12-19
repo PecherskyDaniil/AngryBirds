@@ -1,7 +1,8 @@
-[gd_scene load_steps=4 format=3 uid="uid://mqa2j2ie8fcl"]
+[gd_scene load_steps=5 format=3 uid="uid://mqa2j2ie8fcl"]
 
 [ext_resource type="Script" uid="uid://bsorthe7gcg0c" path="res://scripts/level_selector.gd" id="1_gkmvm"]
 [ext_resource type="Texture2D" uid="uid://e7ag5ne6bmve" path="res://assets/map.png" id="2_gkmvm"]
+[ext_resource type="AudioStream" uid="uid://tfwyclpyj6q3" path="res://audio/Ari_Pulkkinen_-_Angry_Birds_Theme_73535275.mp3" id="3_tr5s6"]
 
 [sub_resource type="Theme" id="Theme_aeu7d"]
 default_font_size = 40
@@ -25,5 +26,10 @@ text = "Back"
 [node name="Line2D" type="Line2D" parent="."]
 visible = false
 points = PackedVector2Array(72, 400, 272, 312, 424, 416, 576, 512, 736, 440, 976, 288, 1080, 256)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_tr5s6")
+volume_db = -40.0
+autoplay = true
 
 [connection signal="pressed" from="Back" to="." method="_on_back_pressed"]
