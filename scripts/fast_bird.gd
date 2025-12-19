@@ -5,6 +5,12 @@ extends RigidBody2D
 signal score_event(name,score_amount,pos)# сигнал для обработки смерти птички и чтоб считать очки
 
 @onready var collision:CollisionShape2D=get_node("CollisionShape2D") # колизии
+@onready var audio_player:AudioStreamPlayer=$AudioStreamPlayer
+@onready var fly_sound=preload("res://audio/birds_sounds/bird-02-flying.mp3")
+@onready var collision_sound=preload("res://audio/birds_sounds/bird-03-collision-a2.mp3")
+@onready var ability_sound=preload("res://audio/birds_sounds/bird-02-select.mp3")
+@onready var die_sound=preload("res://audio/birds_sounds/bird-destroyed.mp3")
+@onready var anim_player=$AnimationPlayer
 const DEAD_TIME=3.0 # время смерти, дад дада
 
 var is_active=false # флаг на кидание
@@ -12,6 +18,8 @@ var dead_time_remains=DEAD_TIME #таймер смерти
 var ability_used=false # флаг что абилка юзнута
 var punched=false
 func _ready() -> void:
+	anim_player.play("idle")
+	audio_player.volume_db=-30.0
 	self.set_max_contacts_reported(5)
 	self.contact_monitor=true
 
@@ -24,6 +32,8 @@ func _process(delta: float) -> void:
 	else:
 		dead_time_remains=DEAD_TIME
 	if dead_time_remains<=0:
+		audio_player.stream=die_sound
+		audio_player.play()
 		score_event.emit("bird_died",-100,self.global_position)
 		self.queue_free()
 	
@@ -33,13 +43,18 @@ func to_passive_state():
 	self.freeze=true
 
 func to_active_state():
+	audio_player.stream=fly_sound
+	audio_player.play()
 	is_active=true
 	collision.disabled=false
 	self.freeze=false
 
 func handle_ability():
 	if is_active and Input.is_action_just_pressed("ability") and not ability_used:
+		anim_player.play("speed")
 		ability()
+		audio_player.stream=ability_sound
+		audio_player.play()
 		ability_used=true
 
 func ability():
@@ -50,6 +65,9 @@ func handle_collisions():
 	var colliders=self.get_colliding_bodies()
 	for collider in colliders:
 		ability_used=true
-		punched=true
+		if punched==false:
+			audio_player.stream=collision_sound
+			audio_player.play()
+			punched=true
 		if collider.has_method("damage") and self.linear_velocity.length()>20.0:
 			collider.damage(self.linear_velocity)

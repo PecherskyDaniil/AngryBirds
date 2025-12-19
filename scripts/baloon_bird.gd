@@ -5,6 +5,11 @@ extends RigidBody2D
 signal score_event(name,score_amount,pos)# сигнал для обработки смерти птички и чтоб считать очки
 
 @onready var collision:CollisionShape2D=get_node("CollisionShape2D") # колизии
+@onready var audio_player:AudioStreamPlayer=$AudioStreamPlayer
+@onready var fly_sound=preload("res://audio/birds_sounds/bird-03-flying.mp3")
+@onready var collision_sound=preload("res://audio/birds_sounds/bird-04-collision-a2.mp3")
+@onready var ability_sound=preload("res://audio/birds_sounds/dasasd.mp3")
+@onready var die_sound=preload("res://audio/birds_sounds/bird-destroyed.mp3")
 const DEAD_TIME=3.0 # время смерти, дад дада
 
 var is_active=false # флаг на кидание
@@ -13,6 +18,7 @@ var ability_used=false # флаг что абилка юзнута
 var punched=false
 @onready var anim:AnimationPlayer=get_node("AnimationPlayer")
 func _ready() -> void:
+	audio_player.volume_db=-40.0
 	self.set_max_contacts_reported(5)
 	self.contact_monitor=true
 	anim.play("small")
@@ -38,6 +44,8 @@ func to_passive_state():
 	self.freeze=true
 
 func to_active_state():
+	audio_player.stream=fly_sound
+	audio_player.play()
 	anim.play("small")
 	is_active=true
 	collision.disabled=false
@@ -45,6 +53,8 @@ func to_active_state():
 
 func handle_ability():
 	if is_active and Input.is_action_just_pressed("ability") and not ability_used:
+		audio_player.stream=ability_sound
+		audio_player.play()
 		ability()
 		ability_used=true
 
@@ -53,8 +63,12 @@ func ability():
 	
 
 func handle_collisions():
+	
 	var colliders=self.get_colliding_bodies()
 	for collider in colliders:
-		punched=true
+		if punched==false:
+			audio_player.stream=collision_sound
+			audio_player.play()
+			punched=true
 		if collider.has_method("damage") and self.linear_velocity.length()>20.0:
 			collider.damage(self.linear_velocity)
